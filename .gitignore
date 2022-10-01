@@ -1,0 +1,6 @@
+cpp/src/build/
+cpp/tests/.vs/
+cpp/tests/x64/
+python/.ipynb_checkpoints/
+python/config.txt
+python/output_data.txt

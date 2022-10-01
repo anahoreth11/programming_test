@@ -1,22 +1,24 @@
-# Simudyne Backend Programming Test
+# Backend Programming Test Solution
 
-You are being asked to create a simple agent based model of a set of agents (with values as defined in PsuedoData) that will execute the basic logic (as defined in PsuedoCode). You should fork this repo and once finished with your submission please email the Github link to john.andrews@simudyne.com
+My solution of Backend Programming Test. The solution is written on Windows, and although for the most part the code is cross-platform, there is a probability of the errors on other platforms.
 
-Overall you'll need to do the following things:
+## Structure
 
-1. Use C++ for the code execution of agents and parsing of data
-2. Please use either a script/command line argument/Juptyer notebook entry for the single input of Brand_Factor (but it should be somehow variable to a user)
-3. Use a Juptyer notebook to either interop with the C++ code/program directly or indirectly (such as reading outputted data) and use whatever method or library you like to display the results of the program execution as defined by outputs in the psuedo code.
-4. If you have questions please email john.andrews@simudyne.com
+There are three parts of the solution:
 
-In terms of what we are looking for while the test can be “solved” in under 1 hour - we recommend being creative with your submission. We are looking for submissions that show a good understanding of:
+1. cpp code, which gets input data, analyzes it and saves results (folder "cpp/src").
+2. tests for the cpp code (folder "cpp/tests").
+3. Jupyter notebook python/Example.ipynb, which is an entry point to the solution. 
 
-* Optimized code in terms of performance and speed
-* Program setup & design
-* Management of data inputs and outputs
-* Good documentation and instructions to run your code
-* Code being robust and extendable potentially beyond what you write for the assignment
-* Test-driven development focused code
-* Analysis of output and key findings (and/or code to analyze data)
 
-Your solution doesn’t need to be perfect in all the above areas. It’s better in the time frame to focus on one aspect to show off your strengths. Following the test, there may be a code review that asks why you made the choices or tradeoffs you did, and what you think the next hypothetical steps would be.
+## Cpp Source Code
+
+In the main.cpp file cpp-code input data, analyzes it and saves results. For building sources to exe-file CMake is used (see python/Example.ipynb for the details).
+
+## Cpp Tests
+
+In folder "cpp/tests" there is a test project for cpp source code. This project uses Visual Studio test framework. It could be possible to check tests by opening the "UnitTests.vcxproj" file and push the "Run Tests" button.
+
+## Jupyter notebook
+
+It could be possible to check and use the solution by using the python/Example.ipynb notebook. There are details of its usage in the file
