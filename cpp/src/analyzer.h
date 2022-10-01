@@ -1,6 +1,6 @@
 #pragma once
 
-#include "file_reader.h"
+#include "reader.h"
 #include "data_types.h"
 #include "RNG.h"
 
@@ -19,4 +19,3 @@ private:
 	Configs _configs;
 	std::vector<Results> _results;
 };
-

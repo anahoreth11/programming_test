@@ -3,21 +3,14 @@
 #include <fstream>
 #include <sstream>
 
-#include "file_reader_helper.h"
-
-
-// const double DEFAULT_BRAND_FACTOR = 1.0;
-std::string DEFAULT_INPUT_FILE_NAME = "input_data.csv";
-std::string DEFAULT_OUTPUT_FILE_NAME = "output_data.txt";
-bool DEFAULT_IS_FULL_DATA = false;;
-
+#include "stream_reader_helper.h"
 
 std::optional<Configs> get_configs_from_line(const std::string& config_line) {
 	std::istringstream configs_stream(config_line);
-	std::string brand_factor_str = get_str_value_from_csv_stream(configs_stream);
-	std::string input_file_name = get_str_value_from_csv_stream(configs_stream);
-	std::string output_file_name = get_str_value_from_csv_stream(configs_stream);
-	std::string is_full_data_str = get_str_value_from_csv_stream(configs_stream);
+	std::string brand_factor_str = get_str_value_from_stream(configs_stream, ',');
+	std::string input_file_name = get_str_value_from_stream(configs_stream, ',');
+	std::string output_file_name = get_str_value_from_stream(configs_stream, ',');
+	std::string is_full_data_str = get_str_value_from_stream(configs_stream, ',');
 	if (brand_factor_str.empty() || input_file_name.empty()
 		|| output_file_name.empty() || is_full_data_str.empty()) {
 		return std::nullopt;
@@ -40,7 +33,7 @@ std::optional<Configs> get_configs_from_line(const std::string& config_line) {
 
 std::optional<Configs> get_configs_from_file(const std::string& config_file_name) {
 	std::ifstream config_file_stream(config_file_name, std::ios::in);
-	std::string configs_line = get_line_from_stream(config_file_stream);
+	std::string configs_line = get_str_value_from_stream(config_file_stream);
 	if (configs_line.empty()) {
 		return std::nullopt;
 	}

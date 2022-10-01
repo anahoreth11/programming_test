@@ -5,10 +5,12 @@ project(ProgrammingTest LANGUAGES CXX)
 set (CMAKE_CXX_STANDARD 17)
 
 add_executable(cpp_executable 
-	RNG.cpp
-	file_reader_helper.cpp
-	file_reader.cpp
-	config_parser.cpp
 	analyzer.cpp
+	config_parser.cpp
+	reader.cpp
+	result_saver.cpp
+	RNG.cpp
+	stream_reader_helper.cpp
 	main.cpp)
+
 

@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 #include "CppUnitTest.h"
 
-#include "../src/file_reader_helper.cpp"
+#include "../src/stream_reader_helper.cpp"
 #include "../src/config_parser.h"
 #include "../src/config_parser.cpp"
 
@@ -24,7 +24,7 @@ namespace UnitTests
 			std::string s = "2.0,input.csv,output.txt,0";
 			auto config = get_configs_from_line(s);
 			Assert::IsTrue(config.has_value());
-			Assert::AreEqual(config->brand_factor, 2.0);
+			Assert::AreEqual(config->brand_factor, 2.0, 0.0001);
 			Assert::AreEqual(config->input_file_name, { "input.csv" });
 			Assert::AreEqual(config->output_file_name, { "output.txt" });
 			Assert::IsFalse(config->is_full_data);

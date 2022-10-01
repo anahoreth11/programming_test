@@ -4,14 +4,15 @@ Analyzer::Analyzer(std::unique_ptr<RNG>&& rng, const Configs& configs):
 	_rng(std::move(rng)), _configs(configs), _ages_count(15), 
 	_results(std::vector<Results>(_ages_count, Results{})) {}
 
-
 double Analyzer::GetAffinity(const Row& row) {
-	double rand = _rng->get_random();
-	return row.payment_at_purchase / row.attribute_price + rand * row.attribute_promotions * row.inertia_for_switch;
+	double rand = _rng->get_random() * 3;
+	return row.payment_at_purchase / row.attribute_price 
+		+ rand * row.attribute_promotions * row.inertia_for_switch;
 }
 
 bool Analyzer::IsCConditionTrue(const Row& row) {
 	double affinity = GetAffinity(row);
+	std::cout << affinity << " " << row.social_grade * row.attribute_brand;
 	return affinity < row.social_grade * row.attribute_brand;
 }
 
@@ -40,8 +41,7 @@ void Analyzer::Analyze(const Row& row) {
 				if (row.agent_breed == AgentBreed::Breed_C) {
 					_results[age].breed_c_lost_ids.push_back(row.policy_id);
 				}
-			}
-			else {
+			} else {
 				_results[age].breed_c_ids.push_back(row.policy_id);
 			}
 		} else {
@@ -54,8 +54,7 @@ void Analyzer::Analyze(const Row& row) {
 				if (has_lost) {
 					_results[age].breed_c_regained_ids.push_back(row.policy_id);
 				}
-			}
-			else {
+			} else {
 				_results[age].breed_nc_ids.push_back(row.policy_id);
 			}
 		}
@@ -68,4 +67,3 @@ std::vector<Results> Analyzer::GetResults() {
 	}
 	return { _results[_ages_count - 1]};
 }
-
